@@ -33,7 +33,9 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public void deleteUser(long id) {
-        entityManager.remove(entityManager.find(User.class, id));
+        entityManager.createQuery("DELETE FROM User u WHERE u.id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
     }
 
     @Override
