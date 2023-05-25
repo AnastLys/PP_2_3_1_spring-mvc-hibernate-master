@@ -35,28 +35,28 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/users/{id}")
-    public String showUser(ModelMap model, @PathVariable("id") long id){
+    @GetMapping("/users/show")
+    public String showUser(ModelMap model, @RequestParam("id") long id){
         model.addAttribute("theUser", userService.findUser(id));
         return "showUser";
     }
 
 
-    @GetMapping("/users/{id}/edit")
-    public String showUserUpdatePage(ModelMap model, @PathVariable("id") long id) {
+    @GetMapping("/users/edit")
+    public String showUserUpdatePage(ModelMap model, @RequestParam("id") long id) {
         model.addAttribute("theUser", userService.findUser(id));
         return "editUser";
     }
 
 
-    @PostMapping(value = "/users/{id}/edit")
+    @PostMapping(value = "/users/edit")
     public String edit(@ModelAttribute("theUser") User user) {
         userService.updeteUser(user);
         return "redirect:/users";
     }
 
-    @GetMapping("/users/{id}/delete")
-    public String deleteUserFromList(ModelMap model, @PathVariable("id") long id) {
+    @GetMapping("/users/delete")
+    public String deleteUserFromList(ModelMap model, @RequestParam("id") long id) {
         userService.deleteUser(id);
         return "redirect:/users";
     }

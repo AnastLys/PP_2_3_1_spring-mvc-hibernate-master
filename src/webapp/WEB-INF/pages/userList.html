@@ -19,14 +19,15 @@
     </tr>
     <tr th:each ="user : ${users}">
       <td>
-        <a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getId()}"> </a>
+        <a th:href="@{/users/show(id=${user.getId()})}" th:text="${user.getId()}">
+          <button type="button"> </button> </a>
       </td>
       <td th:utext="${user.getFirstName()}">...</td>
       <td th:utext="${user.getLastName()}">...</td>
       <td th:utext="${user.getEmail()}">...</td>
       <td>
-      <a th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a>
-      <a th:href="@{/users/{id}/delete(id=${user.getId()})}">Delete</a>
+      <a th:href="@{/users/edit(id=${user.getId()})}">Edit</a>
+      <a th:href="@{/users/delete(id=${user.getId()})}">Delete</a>
       </td>
     </tr>
   </table>
